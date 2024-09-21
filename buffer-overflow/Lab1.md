@@ -2,7 +2,7 @@
 
 ## bof1 :
 
-![stackframe](./img/bof1.png)
+![stackframe](./img/bof1.jpg)
 <br>
 
 #### 1. compile bof1.c with gcc and turn off stack smashing & also aligns values ​​that are not multiples of 2 so that they are all at an even address

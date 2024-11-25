@@ -2,8 +2,7 @@
 
 **Question 1**:
 Conduct transfering a single plaintext file between 2 computers,
-Using openssl to implementing measures manually to ensure file integerity and authenticity at sending side,
-then veryfing at receiving side.
+Using openssl to implementing measures manually to ensure file integerity and authenticity at sending side, then veryfing at receiving side.
 
 **Answer 1**:
 
@@ -15,15 +14,7 @@ _First, we write a message and save it in a text file:_<br>
 echo "I'm fullstack developer" > file.txt
 ```
 
-## 2.Create HMAC for file.txt :
-
-```sh
-openssl dgst -sha256 -mac HMAC -macopt key:secretkey -out /file.hmac /file.txt
-```
-
-<img width="500" alt="Screenshot" src="https://github.com/user-attachments/assets/b817ffcc-6502-495f-9872-eb0f2ad87b86"><br>
-
-## 3. Use bridge to tranfer file from container sender to container receiver:
+## 2. Use bridge to tranfer file from container sender to container receiver:
 
 ```sh
 scp /file.txt user@172.17.0.3:/file.txt
@@ -46,12 +37,12 @@ All steps are made manually with openssl at the terminal of each computer.
 
 **Answer 1**:
 
-## 1. Create a text file named `plaintext.txt`:
+## 1. Create a text file named `plain.txt`:
 
 _First, we write a message and save it in a text file:_<br>
 
 ```sh
-echo "Hello World I'm a student of UTE university" > plaintext.txt
+echo "Hello World I'm a student of UTE university" > plain.txt
 ```
 
 _Read plain.txt file_<br>
@@ -99,10 +90,10 @@ openssl rand -out secret.key 32
 
 <img width="500" alt="Screenshot" src="https://github.com/user-attachments/assets/21a99dfd-53d5-4b7c-8d4b-849d392dde01"><br>
 
-Encrypt the plaintext.txt file with AES-256<br>
+Encrypt the plain.txt file with AES-256<br>
 
 ```sh
-openssl enc -aes-256-cbc -salt -in plaintext.txt -out encrypted_file.bin -pass file:./secret.key
+openssl enc -aes-256-cbc -salt -in plain.txt -out encrypted_file.bin -pass file:./secret.key
 ```
 
 <img width="500" alt="Screenshot" src="https://github.com/user-attachments/assets/b3edfbe4-b997-4408-a658-36708fb03287"><br>
@@ -125,7 +116,7 @@ openssl rsautl -encrypt -inkey public_key.pem -pubin -in secret.key -out encrypt
 Decrypt secret.key with private key<br>
 
 ```sh
-openssl rsautl -decrypt -inkey private_key.pem -in encrypted_key.bin -out data/decrypted_key.txt
+openssl rsautl -decrypt -inkey private_key.pem -in encrypted_key.bin -out decrypted_key.txt
 ```
 
 <img width="500" alt="Screenshot" src="https://github.com/user-attachments/assets/3fa5432c-f36a-464b-a8f6-a513d0560f15"><br>
@@ -138,11 +129,7 @@ openssl enc -d -aes-256-cbc -in encrypted_file.bin -out decrypted_plaintext.txt 
 
 <img width="500" alt="Screenshot" src="https://github.com/user-attachments/assets/99e6b9c2-8c87-437e-bd10-52740e30cc6a"><br>
 
-## 8. Compare file contents use `diff`
-
-```sh
-diff plaintext.txt decrypted_plaintext.txt
-```
+<br><br>
 
 # Task 3: Firewall configuration
 
